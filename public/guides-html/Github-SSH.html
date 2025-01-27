@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Linux How-To</title>
+</head>
+
+<body>
+<h1>SSH Access for GitHub</h1>
+<h2>Generate SSH key</h2>
+<pre><code class="language-sh">ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/github -C &quot;github key&quot;
+eval &quot;$(ssh-agent -s)&quot;
+ssh-add ~/.ssh/github
+</code></pre>
+<h2>Add the public key to Github</h2>
+<p>Login to Github.com,
+go to Settings, SSH and GPG keys,
+click 'New SSH key', paste the contents from the public key github.pub
+which looks like:</p>
+<pre><code>ssh-ed25519 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX github key
+</code></pre>
+<h2>Test the key is working</h2>
+
+</body>
+
+</html>
