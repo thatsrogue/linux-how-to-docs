@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux How-To</title>
+</head>
+
+<body>
+<h2>SMB Samba Share</h2>
+<h3>Setup</h3>
+<pre><code>adduser dungeon
+</code></pre>
+<pre><code>sudo apt install samba
+</code></pre>
+<pre><code>sudo nano /etc/samba/smb.conf
+</code></pre>
+<p>Then, add these lines</p>
+<pre><code>[earth]
+    comment = Dungeon Storage
+    path = /mnt/earth
+    read only = no
+    browsable = yes
+</code></pre>
+<p>Make sure the directory of the share exists and is owned by the new user.</p>
+<p>To add the user to samba run <code>sudo smbpasswd -a dungeon</code> then enter a new password for SMB use.</p>
+<h3>Setup for Guest Use</h3>
+<p>As above installation, though use conf like this:</p>
+<pre><code>[earth]
+    comment = Dungeon Storage
+    path = /mnt/earth
+    public = yes
+    guest only = yes
+    writable = yes
+    force create mode = 0666
+    force directory mode = 0777
+    browseable = yes
+</code></pre>
+<p>Run <code>sudo service smbd restart</code> after changing the conf file</p>
+<h3>Connect From Linux</h3>
+<p>To login as the user</p>
+<pre><code>sudo apt install smbclient -y
+smbclient //192.168.1.208/earth -U dungeon
+</code></pre>
+<p>To login anonymously</p>
+<h2>ZFS Zpool</h2>
+<h3>Install</h3>
+<pre><code>sudo apt install zfsutils-linux -y
+sudo modprobe zfs
+</code></pre>
+
+</body>
+
+</html>

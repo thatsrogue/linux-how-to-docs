@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux How-To</title>
+</head>
+
+<body>
+<h3>Create new ZFS pool</h3>
+<h4>Simple - with /dev/sdx</h4>
+<pre><code>sudo zpool create -f tank raidz1 /dev/sdb /dev/sdc /dev/sdd
+</code></pre>
+<h4>Thorough - with /dev/disk/by-id</h4>
+<p>It’s not super pretty but you can find the ID/Serial number with <code>ls -l /dev/disk/by-id/</code> and then use the ID’s as such:</p>
+<pre><code>sudo zpool create -f dummy raidz1 \
+/dev/disk/by-id/wwn-0x5000c5007fa27c96 \
+/dev/disk/by-id/wwn-0x5000c500259d4d69 \
+/dev/disk/by-id/wwn-0x5000c5004a89f155 \
+/dev/disk/by-id/wwn-0x5000cca715c20e10
+</code></pre>
+<p>Note you can also find an ata-xxxx Model/Serial Number ID, which is my preferred use.</p>
+<h3>Mount</h3>
+<pre><code>sudo zfs set mountpoint=/mnt/raidz tank
+</code></pre>
+<p>To be confirmed this command works (cool syntax), change the permissions of mount directory with <code>sudo chown -R sven:sven /foo_mount</code></p>
+<h3>Add a Hot Spare after creation</h3>
+<pre><code>sudo zpool add dummy spare ata-HGST_HTS725050A7E630_170514RCF50ACF1LB01N
+</code></pre>
+<h3>Change /dev/sdx Naming to use ID/Serial number</h3>
+<p>Apparently this is safer. Run this to change it after it has been created.</p>
+<pre><code>sudo zpool export tank
+sudo zpool import -d /dev/disk/by-id/ tank
+</code></pre>
+<h3>Deleting Zpool</h3>
+<p><code>sudo zpool destroy</code> takes a long long time.</p>
+<p>The pool can be <em>disconnected</em> with <code>sudo zpool export tank</code></p>
+<h3>Replacing FAULTED or OFFLINE Disks</h3>
+<p>This method is apparently not preferred as it <a href="https://docs.tritondatacenter.com/private-cloud/troubleshooting/disk-replacement#replace-the-drive-with-a-spare">may be prone to human error.</a></p>
+<pre><code>sudo zpool offline fivebysix ata-ST500LT012-1DG142_S3PFF53T
+sudo zpool replace fivebysix 13874504625698518329 /dev/disk/by-id/ata-HGST_HTS725050A7E630_170421RCF50ACF1KJS6N
+</code></pre>
+<p>if you restart during resilver - it will start from the beginning. I think there may be a way to pause it…</p>
+
+</body>
+
+</html>

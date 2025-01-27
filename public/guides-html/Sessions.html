@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux How-To</title>
+</head>
+
+<body>
+<h1>Sessions</h1>
+<h2>Installation</h2>
+<pre><code>sudo apt install screen -y
+</code></pre>
+<h2>Start a New Session</h2>
+<pre><code>screen -S session_name
+</code></pre>
+<h2>Detach From Screen Session</h2>
+<p>Ctrl + a, Ctrl + d</p>
+<h2>Reattach to a Screen</h2>
+<pre><code>screen -r
+</code></pre>
+<h2>Reattach to Screen When There are Multiple</h2>
+<pre><code>screen -ls
+</code></pre>
+<p>Output:</p>
+<pre><code>There are screens on:
+        530181.testscreen       (13/09/22 12:52:49)     (Detached)
+        530092.makeitgpg        (13/09/22 12:36:02)     (Detached)
+2 Sockets in /run/screen/S-sven.
+</code></pre>
+<p>To attach to testscreen, run</p>
+<pre><code>screen -r 530181
+</code></pre>
+
+</body>
+
+</html>

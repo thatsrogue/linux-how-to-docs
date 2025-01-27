@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux How-To</title>
+</head>
+
+<body>
+<h1>Debian SSH Keys</h1>
+<h3>Create SSH key and copy it to the server</h3>
+<pre><code class="language-sh">ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/P310 -C &quot;dungeonsff to P310&quot;
+eval &quot;$(ssh-agent -s)&quot;
+ssh-add ~/.ssh/P310
+ssh-copy-id -i ~/.ssh/P310 192.168.1.210
+</code></pre>
+<h3>Add this to</h3>
+<pre><code class="language-sh">~/.ssh/config 
+</code></pre>
+<pre><code class="language-sh">Host P310
+  HostName 192.168.1.210
+  User sven
+  IdentityFile ~/.ssh/P310
+  IdentitiesOnly yes
+</code></pre>
+
+</body>
+
+</html>
