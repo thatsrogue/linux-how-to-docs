@@ -8,10 +8,11 @@ ssh-add ~/.ssh/P310
 ssh-copy-id -i ~/.ssh/P310 192.168.1.210
 ```
 
-### Add this to 
+### Create this file
 ```sh 
 ~/.ssh/config 
 ```
+### Append this to it
 ```sh
 Host P310
   HostName 192.168.1.210

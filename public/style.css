@@ -10,13 +10,33 @@ html {
 
 a:link {
     color: rgb(235, 241, 255);
-  }
+}
   
 a:visited {
     color: #77a0ff;
-  }
+}
   
-  a:hover {
-    color: white;
-    background-color: blue;
-  }
+a:hover {
+  color: white;
+  background-color: blue;
+}
+
+pre {
+  background: #2c2c2c;
+  border: 1px solid #ddd;
+  color: #b8ffb8;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}
+
+h1 {
+  font-size: 3em;
+}

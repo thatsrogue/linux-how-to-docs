@@ -10,16 +10,17 @@
 </head>
 
 <body>
-<h1>Debian SSH Keys</h1>
+  <h1>Linux How-To Guides</h1><h1>Debian SSH Keys</h1>
 <h3>Create SSH key and copy it to the server</h3>
 <pre><code class="language-sh">ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/P310 -C &quot;dungeonsff to P310&quot;
 eval &quot;$(ssh-agent -s)&quot;
 ssh-add ~/.ssh/P310
 ssh-copy-id -i ~/.ssh/P310 192.168.1.210
 </code></pre>
-<h3>Add this to</h3>
+<h3>Create this file</h3>
 <pre><code class="language-sh">~/.ssh/config 
 </code></pre>
+<h3>Append this to it</h3>
 <pre><code class="language-sh">Host P310
   HostName 192.168.1.210
   User sven

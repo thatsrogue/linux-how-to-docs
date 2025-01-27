@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<h1>SSH Access for GitHub</h1>
+  <h1>Linux How-To Guides</h1><h1>SSH Access for GitHub</h1>
 <h2>Generate SSH key</h2>
 <pre><code class="language-sh">ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/github -C &quot;github key&quot;
 eval &quot;$(ssh-agent -s)&quot;
@@ -24,6 +24,9 @@ which looks like:</p>
 <pre><code>ssh-ed25519 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX github key
 </code></pre>
 <h2>Test the key is working</h2>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>Now you're good to go</p>
 
 </body>
 
