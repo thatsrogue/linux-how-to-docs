@@ -23,3 +23,9 @@ ssh-ed25519 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX gi
 ```
 
 ## Test the key is working
+
+```
+ssh -T git@github.com
+```
+
+Now you're good to go
