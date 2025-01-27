@@ -30,7 +30,7 @@ guideNames.forEach(guidefn => {
 console.log(contentLinks)
 let linksHTML = ''
 contentLinks.forEach(link => {
-    linksHTML += "<a href='guides-html/" + link + "'>" + link + "</a><br>"
+    linksHTML += "<a href='guides-html/" + link + "'>" + link + "</a><br>\n"
 })
 let newIndex = htmlpre + linksHTML + htmlpost
 fs.writeFile('public/index.html', newIndex, err => {
