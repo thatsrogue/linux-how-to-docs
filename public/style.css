@@ -1,0 +1,22 @@
+html {
+    background-color: black;
+    color: white;
+}
+
+.guidelink {
+    font-size: 2em;
+    text-decoration: none;
+}
+
+a:link {
+    color: rgb(235, 241, 255);
+  }
+  
+a:visited {
+    color: rgb(188, 208, 255);
+  }
+  
+  a:hover {
+    color: white;
+    background-color: blue;
+  }
