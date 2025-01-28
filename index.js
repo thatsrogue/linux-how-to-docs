@@ -18,6 +18,10 @@ let contentLinks = []
 
 
 let guideNames = fs.readdirSync(guideFolder);
+// Create the directory for HTML guides
+if (!fs.existsSync('public/guides-html')) {
+    fs.mkdirSync('public/guides-html')
+}
 guideNames.forEach(guidefn => {
     const guideContent = fs.readFileSync(guideFolder + guidefn, 'utf8')
     const htmlData = htmlpre + md.render(guideContent) + htmlpost
