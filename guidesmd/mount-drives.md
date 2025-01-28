@@ -1,16 +1,16 @@
-## Drives
+# Drives
 
-### Mounting
+## Mounting
 Create directory, add permissions
 Then run, changing partition and mount point
 ```sh
 sudo mount -t auto /dev/sdb1 /mnt/earth
 ```
-### Un-Mounting
+## Un-Mounting
 ```sh
 umount /dev/sdb1
 ```
-### Auto-Mounting
+## Auto-Mounting
 Create directory to mount to
 Add permissions if required
 Run 
